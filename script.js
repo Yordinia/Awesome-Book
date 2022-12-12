@@ -3,10 +3,9 @@ const title = document.querySelector(".title");
 const author = document.querySelector(".author");
 const booksList = document.querySelector(".books");
 
-//form.preventDefault();
 
 
-const books = [];
+const books = JSON.parse(localStorage.getItem('books-list')) || [];
 
 
 function callback(e){
@@ -16,11 +15,19 @@ function callback(e){
         title: title.value,
         author: author.value
     }
-//localStorage.setItem('book-value', JSON.stringify(book))
-    
-    console.log('created book',book)
+
+  books.push(book)
+  localStorage.setItem('books-list', JSON.stringify(books))
+   
+  booksList.innerHTML = ''
+    books.forEach(book =>{
+    booksList.innerHTML +=  `
+    title ${book.title} by <em> ${book.author}  </em> <br> <br>
+    `
+})
+  
+
 }
 
 
 button.addEventListener('click', callback)
-
