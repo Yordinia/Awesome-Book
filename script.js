@@ -19,7 +19,7 @@ let i =0;
   if(books.length!==0){
      books.forEach(book =>{
     booksList.innerHTML +=  `<div class='book'>
-    title ${book.title} by <em> ${book.author}  </em> <button onclick="remove(${i++})"> Remove </button> </div>
+    title ${book.title} by <em> ${book.author}  </em><button onclick="remove(${i++})"> Remove </button> </div>
     `
     })
   }
