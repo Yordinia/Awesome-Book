@@ -7,7 +7,24 @@ const booksList = document.querySelector(".books");
 
 const books = JSON.parse(localStorage.getItem('books-list')) || [];
 
+function remove(i){
+    //remove that button
+   
+}
 
+function display(){
+    if(books.length === 0) {booksList.innerText = 'No books in local storage'; return 0; }
+let i =0;
+  booksList.innerHTML = ''
+  if(books.length!==0){
+     books.forEach(book =>{
+    booksList.innerHTML +=  `
+    title ${book.title} by <em> ${book.author}  </em> <button onclick="remove(${i++})"> Remove </button> <br> <br>
+    `
+    })
+  }
+}
+display()
 function callback(e){
     e.preventDefault();
 
@@ -19,15 +36,12 @@ function callback(e){
   books.push(book)
   localStorage.setItem('books-list', JSON.stringify(books))
    
-  booksList.innerHTML = ''
-    books.forEach(book =>{
-    booksList.innerHTML +=  `
-    title ${book.title} by <em> ${book.author}  </em> <br> <br>
-    `
-})
-  
+  display();
 
+  title.value = ''
+  author.value = ''
 }
 
 
 button.addEventListener('click', callback)
+
