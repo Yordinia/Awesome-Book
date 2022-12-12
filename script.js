@@ -8,7 +8,7 @@ const books = JSON.parse(localStorage.getItem("books-list")) || [];
 function remove(i) {
   let x = document.querySelectorAll(".book")[i];
   booksList.removeChild(x);
-  books.splice(i);
+  books.splice(i,1);
   localStorage.setItem("books-list", JSON.stringify(books));
   display();
 }
