@@ -5,6 +5,13 @@ const title = document.querySelector('.title');
 const author = document.querySelector('.author');
 const booksList = document.querySelector('.books');
 
+class Books {
+  constructor (title,author){
+  this.title = title;
+  this.author = author;
+  }
+}
+
 const books = JSON.parse(localStorage.getItem('books-list')) || [];
 
 function display() {
@@ -39,10 +46,7 @@ display();
 function callback(e) {
   e.preventDefault();
 
-  const book = {
-    title: title.value,
-    author: author.value,
-  };
+const book = new Books(title.value,author.value);
 
   books.push(book);
   localStorage.setItem('books-list', JSON.stringify(books));
