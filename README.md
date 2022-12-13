@@ -101,15 +101,15 @@ You can deploy this project using
 ## 👥 Authors 
 <a name="authors"></a>
 
-👤 **Mohammad Kazim**
+👤 **Kamran Ahmad**
 👤 **Yordanos Temesgen**
 
-__kazim__
-- GitHub: [@githubhandle](https://github.com/kazim110) 
+__Kamran Ahmad__
+- GitHub: [@githubhandle](https://github.com/kamranahmad123) 
 - Twitter: [@twitterhandle](https://twitter.com/handel)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/abigail-boateng-345395141/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kamran-khan-9a293b113/)
 
-__yordi__
+__Yordanos Temesgen__
 - GitHub: [@yordinia](https://github.com/yordinia)
 - Twitter: [@yordinia](https://twitter.com/yordinia)
 - LinkedIn: [Yordanos-Temesgen](https://linkedin.com/in/yordanos-temesgen-251b6a202
