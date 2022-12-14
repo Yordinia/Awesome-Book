@@ -7,6 +7,10 @@ const booksList = document.querySelector('.books');
 
 const books = JSON.parse(localStorage.getItem('books-list')) || [];
 
+const date = new Date();
+const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+document.querySelector('.date').innerHTML = `${date.toDateString()}, ${time}`;
+
 class Books {
   constructor(title, author) {
     this.title = title;
@@ -22,9 +26,11 @@ class Books {
     localStorage.setItem('books-list', JSON.stringify(books));
 
     Books.display();
-
-    title.value = '';
-    author.value = '';
+    document.querySelector('.form').reset();
+    // instead of this use form reset
+    // title.value = '';
+    // author.value = '';
+    title.focus();  // to get curser standby at title input
   }
 
   static display() {
@@ -35,13 +41,16 @@ class Books {
     let i = 0;
     booksList.innerHTML = '';
     if (books.length !== 0) {
+      const tbody = document.createElement('tbody');
       books.forEach((book) => {
-        booksList.innerHTML += `<div class='book'>
-      <strong>Title:</strong> ${book.title} <br />
-      <strong>Author:</strong> ${book.author} 
-      <br/><button onclick="Books.remove(${i})"> Remove </button> </div> <br /><hr>
-      `;
+        tbody.innerHTML += `
+      <tr class='book'>
+        <td><strong>"${book.title}"</strong> by <em>${book.author}</em></td>
+        <td><button onclick="Books.remove(${i})" class='btn btn-outline-primary'> Remove </button> </td> 
+      </tr>
+      `; 
         i += 1;
+        booksList.appendChild(tbody); // changed div to table row <tr> add table datas <td> removed hr, br, added btn btn-outline-primary class to button 
       });
     }
     return 0;
