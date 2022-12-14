@@ -6,6 +6,7 @@ const author = document.querySelector('.author');
 const booksList = document.querySelector('.books');
 
 const books = JSON.parse(localStorage.getItem('books-list')) || [];
+const tbody = document.createElement('tbody');
 
 const date = new Date();
 const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
@@ -41,7 +42,6 @@ class Books {
     let i = 0;
     booksList.innerHTML = '';
     if (books.length !== 0) {
-      const tbody = document.createElement('tbody');
       books.forEach((book) => {
         tbody.innerHTML += `
       <tr class='book'>
@@ -58,7 +58,8 @@ class Books {
 
   static remove(i) {
     const x = document.querySelectorAll('.book')[i];
-    booksList.removeChild(x);
+    console.log(x)
+    tbody.removeChild(x);
     books.splice(i, 1);
     localStorage.setItem('books-list', JSON.stringify(books));
     Books.display();
