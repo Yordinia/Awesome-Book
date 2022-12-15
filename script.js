@@ -40,7 +40,7 @@ class Books {
       return 0;
     }
     let i = 0;
-    booksList.innerHTML = '';
+    tbody.innerHTML = '';
     if (books.length !== 0) {
       books.forEach((book) => {
         tbody.innerHTML += `
