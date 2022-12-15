@@ -4,6 +4,31 @@ const button = document.querySelector('.Button');
 const title = document.querySelector('.title');
 const author = document.querySelector('.author');
 const booksList = document.querySelector('.books');
+const listNav = document.querySelector('.listNav');
+const addNav = document.querySelector('.addNav');
+const contactNav = document.querySelector('.contactNav');
+const listSec = document.querySelector('.for-list');
+const addSec = document.querySelector('.for-add');
+const contactSec = document.querySelector('.for-contact');
+
+listSec.style.display = 'none';
+addSec.style.display = 'none';
+contactSec.style.display = 'none';
+listNav.addEventListener('click', () => {
+  listSec.style.display = 'block';
+  addSec.style.display = 'none';
+  contactSec.style.display = 'none';
+});
+addNav.addEventListener('click', () => {
+  addSec.style.display = 'block';
+  listSec.style.display = 'none';
+  contactSec.style.display = 'none';
+});
+contactNav.addEventListener('click', () => {
+  contactSec.style.display = 'block';
+  listSec.style.display = 'none';
+  addSec.style.display = 'none';
+});
 
 const books = JSON.parse(localStorage.getItem('books-list')) || [];
 const tbody = document.createElement('tbody');
@@ -31,14 +56,10 @@ class Books {
     // instead of this use form reset
     // title.value = '';
     // author.value = '';
-    title.focus();  // to get curser standby at title input
+    title.focus(); // to get curser standby at title input
   }
 
   static display() {
-    if (books.length === 0) {
-      booksList.innerText = 'No books in local storage';
-      return 0;
-    }
     let i = 0;
     tbody.innerHTML = '';
     if (books.length !== 0) {
@@ -48,9 +69,9 @@ class Books {
         <td><strong>"${book.title}"</strong> by <em>${book.author}</em></td>
         <td><button onclick="Books.remove(${i})" class='btn btn-outline-primary'> Remove </button> </td> 
       </tr>
-      `; 
+      `;
         i += 1;
-        booksList.appendChild(tbody); // changed div to table row <tr> add table datas <td> removed hr, br, added btn btn-outline-primary class to button 
+        booksList.appendChild(tbody);
       });
     }
     return 0;
@@ -58,7 +79,6 @@ class Books {
 
   static remove(i) {
     const x = document.querySelectorAll('.book')[i];
-    console.log(x)
     tbody.removeChild(x);
     books.splice(i, 1);
     localStorage.setItem('books-list', JSON.stringify(books));
