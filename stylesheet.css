@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ button {
 }
 
 .Button {
-   margin-left: auto;
+  margin-left: auto;
 }
 
 form {
@@ -53,7 +53,7 @@ form {
   flex-direction: column;
 }
 
-form input{
+form input {
   width: 100%;
   min-height: 40px;
 }
@@ -87,7 +87,7 @@ footer {
   margin-top: auto;
 }
 
-footer p{
+footer p {
   border-style: solid;
   border-width: 2px;
   border-radius: 25px 25px 55px 5px/5px 55px 25px 25px;

@@ -18,31 +18,25 @@ listNav.addEventListener('click', () => {
   listSec.style.display = 'block';
   addSec.style.display = 'none';
   contactSec.style.display = 'none';
-  console.log('class lists b4 add',listNav.classList,addNav.classList,contactNav.classList)
   listNav.classList.add('nav-links');
   addNav.classList.remove('nav-links');
   contactNav.classList.remove('nav-links');
-  console.log('class lists of list',listNav.classList,addNav.classList,contactNav.classList)
 });
 addNav.addEventListener('click', () => {
   addSec.style.display = 'block';
   listSec.style.display = 'none';
   contactSec.style.display = 'none';
-  console.log('class lists b4 add',listNav.classList,addNav.classList,contactNav.classList)
   listNav.classList.remove('nav-links');
   addNav.classList.add('nav-links');
   contactNav.classList.remove('nav-links');
-  console.log('class lists of list',listNav.classList,addNav.classList,contactNav.classList)
 });
 contactNav.addEventListener('click', () => {
   contactSec.style.display = 'block';
   listSec.style.display = 'none';
   addSec.style.display = 'none';
-  console.log('class lists b4 add',listNav.classList,addNav.classList,contactNav.classList)
   listNav.classList.remove('nav-links');
   addNav.classList.remove('nav-links');
   contactNav.classList.add('nav-links');
-  console.log('class lists of list',listNav.classList,addNav.classList,contactNav.classList)
 });
 
 const books = JSON.parse(localStorage.getItem('books-list')) || [];
