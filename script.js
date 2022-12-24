@@ -11,9 +11,24 @@ const listSec = document.querySelector('.for-list');
 const addSec = document.querySelector('.for-add');
 const contactSec = document.querySelector('.for-contact');
 
-listSec.style.display = 'none';
+const books = JSON.parse(localStorage.getItem('books-list')) || [{
+  title: 'The Great Gatsby', author: 'F. Scott Fitzgerald'
+},{
+  title: 'Jane Eyre', author: 'Charlotte Bronte'
+}];
+
+const tbody = document.createElement('tbody');
+booksList.appendChild(tbody);
+const date = new Date();
+const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+
+document.querySelector('.date').innerHTML = `${date.toDateString()}, ${time}`;
+
+
+listSec.style.display = 'block';
 addSec.style.display = 'none';
 contactSec.style.display = 'none';
+
 listNav.addEventListener('click', () => {
   listSec.style.display = 'block';
   addSec.style.display = 'none';
@@ -38,21 +53,14 @@ contactNav.addEventListener('click', () => {
   addNav.classList.remove('nav-links');
   contactNav.classList.add('nav-links');
 });
-
-const books = JSON.parse(localStorage.getItem('books-list')) || [];
-const tbody = document.createElement('tbody');
-
-const date = new Date();
-const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-document.querySelector('.date').innerHTML = `${date.toDateString()}, ${time}`;
-
+let m =0;
 class Books {
   constructor(title, author) {
     this.title = title;
     this.author = author;
   }
 
-  static callback(e) {
+  static addBook(e) {
     e.preventDefault();
 
     const book = new Books(title.value, author.value);
@@ -61,14 +69,12 @@ class Books {
     localStorage.setItem('books-list', JSON.stringify(books));
 
     Books.display();
-    document.querySelector('.form').reset();
-    // instead of this use form reset
-    // title.value = '';
-    // author.value = '';
-    title.focus(); // to get curser standby at title input
+    document.querySelector('form').reset();
+    title.focus();
   }
 
   static display() {
+console.log(tbody)
     let i = 0;
     tbody.innerHTML = '';
     if (books.length !== 0) {
@@ -80,7 +86,6 @@ class Books {
       </tr>
       `;
         i += 1;
-        booksList.appendChild(tbody);
       });
     }
     return 0;
@@ -96,4 +101,4 @@ class Books {
 }
 
 Books.display();
-button.addEventListener('click', Books.callback);
+button.addEventListener('click', Books.addBook);

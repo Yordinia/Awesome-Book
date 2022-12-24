@@ -23,7 +23,6 @@ body {
 }
 
 main > section {
-  /* Or you could say main > *   you can remove these comments after reading */
   text-align: center;
   padding: 1rem 2rem;
 }
