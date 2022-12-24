@@ -53,7 +53,7 @@ contactNav.addEventListener('click', () => {
   addNav.classList.remove('nav-links');
   contactNav.classList.add('nav-links');
 });
-let m =0;
+
 class Books {
   constructor(title, author) {
     this.title = title;
